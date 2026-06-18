@@ -8,4 +8,4 @@ $user = new User($conn);
 
 $id = $_GET['id'];
 $user->hapus($id);
-header ("Location: index.php");
+header ("Location: daftar_user.php");
