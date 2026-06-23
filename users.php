@@ -39,6 +39,18 @@ class Users
 
         return false;
     }
+    public function getUserByUsername($username)
+    {
+        $sql = "SELECT * FROM $this->table WHERE username = '$username'";
+        $result = $this->conn->query($sql);
+        return $result->fetch_assoc();
+    }
+    public function updateLoginCount($id)
+    {
+        $sql = "UPDATE $this->table SET login_count = login_count + 1 WHERE id = $id";
+        $this->conn->query($sql);
+    }
+
     public function getAllUsers()
     {
         $sql = "SELECT * FROM $this->table";

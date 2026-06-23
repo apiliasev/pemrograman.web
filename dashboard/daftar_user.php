@@ -1,4 +1,5 @@
 <?php
+
 include '../users.php';
 include '../database.php';
 
@@ -16,6 +17,13 @@ if ($result && $result->num_rows > 0) {
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 <h1>Daftar User</h1>
 <hr />
+<?php if (isset($_SESSION['username'])): ?>
+<div class="alert alert-success" role="alert">
+    Selamat Datang <strong><?= $_SESSION['username'] ?></strong>, 
+    Anda telah login sebanyak <strong><?= $_SESSION['login_count'] ?></strong> kali
+</div>
+<?php endif; ?>
+</hr>
 <a href="index.php?halaman=tambah_user_form.php" class="btn btn-primary mb-3">Tambah User</a>
           <div class="table-responsive small">
             <table class="table table-striped table-sm"> 

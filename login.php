@@ -18,15 +18,13 @@ if($ditemukan==false){
     header ("Location: index.php");
     exit;
 }else{
-
-$user->login($username, $password);
+$dataUser = $user->getUserByUsername($username);
+$user->updateLoginCount($dataUser['id']);
 $_SESSION['is_logged_in'] = true;
-header("Location: dashboard/index.php");
-exit;
-}
-if($password == $password_valid &&
-    $username == $username_valid);
+    $_SESSION['username']     = $dataUser['username'];
+    $_SESSION['login_count']  = $dataUser['login_count'] + 1;
 
-echo "Selamat Datang" . $username ;
-echo "<br />";
-echo "Password Anda" . $password ;
+    header("Location: dashboard/index.php");
+    exit;
+}
+?>
